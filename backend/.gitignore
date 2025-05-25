@@ -7,8 +7,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-package-lock.json
-package.json
+
 # environment variables
 .env*
 

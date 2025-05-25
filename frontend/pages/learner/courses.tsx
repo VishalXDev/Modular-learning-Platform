@@ -1,54 +1,68 @@
-// pages/learner/courses.tsx
 import { useEffect, useState } from "react";
-import useProtectRoute from "@/utils/protectRoute";
+import Link from "next/link";
 import api from "@/services/api";
-import { useRouter } from "next/router";
+
+interface Chapter {
+  _id: string;
+  title: string;
+}
 
 interface Course {
   _id: string;
   title: string;
-  description?: string;
+  description: string;
+  chapters: Chapter[];
+  progress?: Record<string, boolean>; // chapterId to completion status
 }
 
-export default function LearnerCourses() {
-  useProtectRoute("learner");
-  const router = useRouter();
+const LearnerCoursesPage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function fetchCourses() {
+      try {
+        // Explicitly type the response data as Course[]
+        const res = await api.get<Course[]>("/learner/courses");
+        setCourses(res.data);
+      } catch (error) {
+        console.error("Failed to load courses", error);
+      } finally {
+        setLoading(false);
+      }
+    }
     fetchCourses();
   }, []);
 
-  async function fetchCourses() {
-    try {
-      const res = await api.get("/learner/courses"); // your backend endpoint for enrolled courses
-      setCourses(res.data);
-    } catch {
-      alert("Failed to load courses");
-    }
-  }
+  if (loading) return <p className="p-4">Loading courses...</p>;
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Your Enrolled Courses</h1>
-      {courses.length === 0 ? (
-        <p>You are not enrolled in any courses yet.</p>
-      ) : (
-        <ul>
-          {courses.map((course) => (
-            <li
-              key={course._id}
-              onClick={() => router.push(`/learner/${course._id}/chapters`)}
-              className="cursor-pointer p-4 border rounded mb-3 hover:bg-gray-100"
-            >
-              <h3 className="font-semibold">{course.title}</h3>
-              {course.description && (
-                <p className="text-sm text-gray-600">{course.description}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="max-w-4xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">My Courses</h1>
+
+      {courses.map((course) => (
+        <div key={course._id} className="mb-6 border rounded p-4 bg-white">
+          <h2 className="text-xl font-semibold">{course.title}</h2>
+          <p className="text-gray-600 mb-2">{course.description}</p>
+
+          <div className="pl-4">
+            {course.chapters.map((ch) => (
+              <Link
+                key={ch._id}
+                href={`/learner/${course._id}/chapters?chapterId=${ch._id}`}
+                className="block py-1 text-blue-600 hover:underline"
+              >
+                {ch.title}
+                {course.progress?.[ch._id] && (
+                  <span className="ml-2 text-green-600">✓ Completed</span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+};
+
+export default LearnerCoursesPage;

@@ -1,4 +1,3 @@
-// pages/admin/courses.tsx
 import { useEffect, useState } from "react";
 import useProtectRoute from "@/utils/protectRoute";
 import useAuth from "@/hooks/useAuth";
@@ -24,7 +23,7 @@ export default function AdminCourses() {
   useEffect(() => {
     if (token) {
       axios
-        .get("http://localhost:5000/api/courses", {
+        .get<Course[]>("http://localhost:5000/api/courses", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setCourses(res.data))
@@ -36,7 +35,7 @@ export default function AdminCourses() {
   const handleCreateCourse = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      const res = await axios.post<Course>(
         "http://localhost:5000/api/courses",
         { title, description },
         { headers: { Authorization: `Bearer ${token}` } }

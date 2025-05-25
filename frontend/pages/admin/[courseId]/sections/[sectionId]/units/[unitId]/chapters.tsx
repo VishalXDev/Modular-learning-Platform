@@ -1,4 +1,3 @@
-// pages/admin/[courseId]/sections/[sectionId]/units/[unitId]/chapters.tsx
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useProtectRoute from "@/utils/protectRoute";
@@ -27,7 +26,7 @@ export default function ChaptersPage() {
 
   async function fetchChapters() {
     try {
-      const res = await api.get(
+      const res = await api.get<Chapter[]>(
         `/courses/${courseId}/sections/${sectionId}/units/${unitId}/chapters`
       );
       setChapters(res.data);

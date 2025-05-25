@@ -1,4 +1,3 @@
-// pages/admin/[courseId]/sections.tsx
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useProtectRoute from "@/utils/protectRoute";
@@ -27,7 +26,7 @@ export default function SectionsPage() {
 
   async function fetchSections() {
     try {
-      const res = await api.get(`/courses/${courseId}/sections`);
+      const res = await api.get<Section[]>(`/courses/${courseId}/sections`);
       setSections(res.data);
     } catch (error) {
       alert("Failed to load sections");

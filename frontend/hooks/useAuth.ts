@@ -1,8 +1,3 @@
-// hooks/useAuth.ts
 import { useAuthContext } from "@/context/AuthContext";
-
-const useAuth = () => {
-  return useAuthContext();
-};
-
+const useAuth = () => useAuthContext();
 export default useAuth;
