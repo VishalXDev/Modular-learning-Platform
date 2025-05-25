@@ -1,0 +1,181 @@
+{
+  "info": {
+    "name": "Modular Learning Platform API",
+    "_postman_id": "modular-learning-platform-collection",
+    "description": "Collection to create Course, Section, Unit, Chapter, and Question step-by-step",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Course",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Frontend Development\",\n  \"description\": \"Learn HTML, CSS, and JavaScript\",\n  \"createdBy\": \"6831940fe1fd9c2570d36e1b\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/courses",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "courses"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Create Section",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"HTML Basics\",\n  \"courseId\": \"6831da052213cade972cde71\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/sections",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "sections"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Create Unit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"HTML Tags Overview\",\n  \"sectionId\": \"6831da492213cade972cde74\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/units",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "units"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Create Chapter",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Introduction to Tags\",\n  \"content\": \"In this chapter we cover opening and closing HTML tags.\",\n  \"unitId\": \"6831da6d2213cade972cde77\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/chapters",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "chapters"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Create Question",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"chapterId\": \"6831da912213cade972cde7a\",\n  \"type\": \"mcq\",\n  \"questionText\": \"What does HTML stand for?\",\n  \"options\": [\n    \"Hyper Text Markup Language\",\n    \"Home Tool Markup Language\",\n    \"Hyperlink and Text Markup Language\"\n  ],\n  \"correctAnswer\": \"Hyper Text Markup Language\",\n  \"media\": {\n    \"image\": \"\",\n    \"audio\": \"\"\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/questions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "questions"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get User Progress",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzE5NDBmZTFmZDljMjU3MGQzNmUxYiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0ODA3OTcxMCwiZXhwIjoxNzQ4Njg0NTEwfQ.siVQIOi9nkqotzFeCTyOvWJVfzcNG_ykF946RxMO8Ng",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/progress/6831940fe1fd9c2570d36e1b",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "progress", "6831940fe1fd9c2570d36e1b"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
