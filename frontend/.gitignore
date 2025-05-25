@@ -99,3 +99,7 @@ storybook-static
 # Temporary folders
 tmp/
 temp/
+
+# package.lock.json
+package.lock.json
+package.json
